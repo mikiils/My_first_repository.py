@@ -3,10 +3,11 @@ import itertools
 Где ai --- максимальный элемент из i-ого списка '''
 
 def maximize(lists, m):
-    res = 0
+    res = []
     for i in range(len(lists)):
-        res += max(lists[i])**2
-    return res % m
+        res.append(max(lists[i])**2)
+    res = list(itertools.accumulate(res))
+    return res[-1] % m
 lists = [
     [5, 4],
     [7, 8, 9],
